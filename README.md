@@ -10,15 +10,26 @@ This project provides a RESTful API service that accepts network flow feature ve
 
 ---
 
-## 🛠️ Key Features
+## 🛠️ Tech Stack & Dependencies
 
-* **Real-time Prediction**: Fast inference endpoint powered by `FastAPI`.
-* **Automatic Feature Engineering**: On-the-fly logarithmic transformation (`np.log1p`), one-hot encoding, and feature alignment.
-* **Confidence Scoring**: Returns prediction probabilities to assess model certainty.
-* **Trained on UNSW-NB15**: Leverages state-of-the-art network flow parameters for effective anomaly detection.
-* **Interactive API Docs**: Built-in Swagger UI for testing API endpoints seamlessly.
+Below is a detailed breakdown of the libraries and technologies used across the data engineering, machine learning, and API deployment workflows:
 
----
+### 1. Web & API Framework
+* **`FastAPI`**: High-performance, asynchronous web framework used to build the RESTful API endpoints (`/` and `/predict`).
+* **`Uvicorn`**: An ASGI web server implementation used to run and serve the FastAPI application in real-time.
+* **`Pydantic`**: Data validation and settings management using Python type annotations to define request/response schemas.
+
+### 2. Data Manipulation & Storage
+* **`pandas`**: Used for data manipulation, DataFrame structures, categorical feature encoding, and feature alignment during both training and inference.
+* **`numpy`**: Provides vector and array computations, specifically used for mathematical operations like logarithmic transformations (`np.log1p`).
+* **`pyarrow`**: High-performance columnar data memory library used to efficiently read and parse the Apache Parquet file (`UNSW_NB15_training-set.parquet`).
+
+### 3. Machine Learning & Model Persistence
+* **`scikit-learn`**: Core machine learning library used for dataset preprocessing, model evaluation metrics, feature transformations, and classification pipeline execution.
+* **`pickle` / `joblib`**: Object serialization modules used to export the trained model from `project.ipynb` and reload it inside `main.py` for inference.
+
+### 4. Interactive Development & Analysis
+* **`Jupyter Notebook` (`project.ipynb`)**: Used for Exploratory Data Analysis (EDA), feature engineering experiments, model training, and performance evaluation.
 
 ## 📂 Project Structure
 
